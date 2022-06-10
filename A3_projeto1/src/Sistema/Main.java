@@ -30,8 +30,6 @@ public class Main {
                 
         Dados dados = new Dados();
         
-
-       
         
         while(opc == 0){  //painel principal
         	
@@ -55,9 +53,13 @@ public class Main {
 
         	System.out.printf("\n-------------------------------------------------\n\n");
         	
+        	
+        	
+        	
+        	//Cadastra alunos
         	switch(opc) {
 	        	case 1:
-	        		do{ //Cadastra alunos
+	        		do{ 
 	                	
 	                	matriculaAluno = dados.contaAluno() + 1;
 	               
@@ -107,8 +109,10 @@ public class Main {
 		    	        System.out.println("Caso não queira mais cadastrar, "
 		    	        				 + "\nNÃO ENCERRE O PROGRAMA"
 		    	        				 + "\ndigite 2 para parar o cadastro e salvar os "
-		    	        				 + "\ndados cadastrados");
+		    	        				 + "\ndados cadastrados.");
 		    	        System.out.println("\n*************************************************\n");
+		    	        
+		    	        do {System.out.println("Opção inválida");
 		    	        
 		    	        try {
 		    	        //pergunta se o usuário deseja continuar à cadastrar um novo aluno
@@ -118,22 +122,28 @@ public class Main {
 	        	        					+ "\n"); 
 	        	        
 	        	        opc = input.nextInt();
+	        	        input.nextLine();
 	        	        
 	        	        }catch(InputMismatchException exception){
 	        	        	System.out.println("\nERRO: Insira apenas numeros!\n");
 	        	        	input.nextLine();
+	        	        	opc = 3;
 	        	        	continue;
 	        	        	}
 	        	        
-	        	        input.nextLine();
+	        	        }while(opc != 1 && opc != 2);
 		    	        
 	        	        System.out.printf("\n");
 	        	        
 	        	        
-	        		}while(opc == 1); opc = 0; dados.persisteAluno(); System.out.println("Dados salvos com SUCESSO!\n"); break;
+	        		}while(opc == 1); opc = 0; dados.persisteAluno(); System.out.println("Dados salvos com SUCESSO!\n"); break; 
+	        		//cadstro de aluno
 	        	
+	        	
+	        	
+	        	//Cadastra professor
 	        	case 2: 
-	        		do{ //Cadastra professor
+	        		do{ 
 	            	
 		            	cod_funcionario = dados.contaProfessor() + 1;
 		            
@@ -163,7 +173,7 @@ public class Main {
 		    	        System.out.println("Caso não queira mais cadastrar, "
 		    	        				 + "\nNÃO ENCERRE O PROGRAMA,"
 		    	        				 + "\ndigite 2 para parar o cadastro e salvar os "
-		    	        				 + "\ndados cadastrados");
+		    	        				 + "\ndados cadastrados.");
 		    	        System.out.println("\n*************************************************\n");
 		    	        
 		    	        try {
@@ -184,9 +194,13 @@ public class Main {
 		    	        System.out.printf("\n");
 		    	        
 	            }while(opc == 1); opc = 0; dados.persisteProfessor(); System.out.println("Dados salvos com SUCESSO!\n"); break;
+	            //cadastra professor
+	            
+	            
+	            
 	            
 	        	case 3: 
-	        		do{ //Cadastra professor
+	        		do{ //Cadastra sala
 		            	
 		            	cod_sala = dados.contaSala() + 1;
 		            
@@ -208,7 +222,7 @@ public class Main {
 		    	        System.out.println("Caso não queira mais cadastrar, "
 		    	        				 + "\nNÃO ENCERRE O PROGRAMA"
 		    	        				 + "\ndigite 2 para parar o cadastro e salvar os "
-		    	        				 + "\ndados cadastrados");
+		    	        				 + "\ndados cadastrados.");
 		    	        System.out.println("\n*************************************************\n");
 		    	        
 	        	        //pergunta se o usuário deseja continuar à cadastrar um novo aluno
@@ -223,22 +237,27 @@ public class Main {
 		    	        System.out.printf("\n");
 		    	        
 	            }while(opc == 1); opc = 0; dados.persisteSala(); System.out.println("Dados salvos com SUCESSO!\n"); break;
-	        		
+	        	//cadastra sala
+	            
+	            
 	        
 		        case 4: 
 		        	do {
-		        		System.out.println( "|  1 - Cadastrar curso"
- 	        							  + "\n|  2 - Inserir aluno em curso"
- 	        							  + "\n"); 
+		        		System.out.println( "|  1 - Cadastrar curso\n"
+ 	        							  + "|  2 - Inserir aluno em curso\n"
+ 	        							  + "|  0 - Sair\n"); 
 		        		opc = input.nextInt();
 		    	        
 		    	        input.nextLine();
 		    	        
 		    	        switch(opc) {
-		    	        	case 1: 	
+		    	        
+		    	        	case 0: System.out.print("\nSaindo...\n\n"); opc = 0; break;
+		    	        	
+		    	        	case 1: //cadsatro de curso 	
 		    	        			do {
 		    	        			try {
-		    			        	cod_Curso = dados.contaCurso(); 	
+		    			        	cod_Curso = dados.contaCurso() + 1; 	
 		    			        	System.out.printf("Digite o nome do curso: ");
 		    			            nome_curso = input.nextLine();
 		    			             
@@ -270,7 +289,7 @@ public class Main {
 		    		    	        System.out.println("Caso não queira mais cadastrar, "
 		    		    	        				 + "\nNÃO ENCERRE O PROGRAMA"
 		    		    	        				 + "\ndigite 2 para parar o cadastro e salvar os "
-		    		    	        				 + "\ndados cadastrados");
+		    		    	        				 + "\ndados cadastrados.");
 		    		    	        System.out.println("\n*************************************************\n");
 		    		    	        
 		    	        	        //pergunta se o usuário deseja continuar à cadastrar um novo aluno
@@ -291,25 +310,39 @@ public class Main {
 		    			        	}
 		    	        			
 		    			            
-		    	        			}while(opc == 1); dados.persisteCurso(); opc = 1; break;//do 
+		    	        			}while(opc == 1); dados.persisteCurso(); opc = 1; break;//cadastro do curso
+		    	        			
+		    	        			
 		    	        		
 		    	        	case 2:
+		    	        		//insere alunos ao curso
+		    	        		//Pergunta ao usuário qual o codigo do curso que deseja cadastrar
 		    	        		do {
-		    	        			System.out.println("Digite o codigo do curso: ");
+		    	        			System.out.println("\nDigite o codigo do curso: ");
 		    	        			cod_Curso = input.nextInt();
 		    	        			input.nextLine();
-		    	        			x = dados.encontraCurso(cod_Curso);
-		    	        			while(opc == 2){
-		    	        				System.out.println("Digite o codigo do aluno: ");
+		    	        			
+		    	        			x = dados.encontraCurso(cod_Curso); //armazena em x o curso encontrado
+		    	        			
+		    	        			do{ //pergunta ao usuaário a matricula do aluno que deseja inserir no curso
+		    	        				System.out.println("\nDigite o codigo do aluno, 0 para encerrar: ");
 		    	        				matriculaAluno = input.nextInt();
-		    	        				x.addAluno(dados.encontraAluno(matriculaAluno));}
-		    	        		}while(opc == 1); opc = 1; break;
+		    	        				//Se a matricula inserida pelo usário nao possuir nenhum cadastro ira avisar na tela
+		    	        				if(dados.encontraAluno(matriculaAluno) == null) { if (matriculaAluno != 0) {System.out.println("\nMatricula do aluno não encontrada!");}}
+		    	        				else{x.addAluno(dados.encontraAluno(matriculaAluno));}
+		    	        				
+		    	        			}while (matriculaAluno != 0);
+		    	        	
+		    	        		}while(opc == 1); opc = 1; break;//insere aluno ao curso
+		    	            
+		    	        	default: System.out.println("\nOpção inválida! \n"); opc = 1;
 		    	        		
-		    	        }
+		    	        	}//switch do caso 4
 			        	
-			    }while(opc == 1); opc = 0; break;
+			    }while(opc == 1); opc = 0; break; //while do caso 4
 			        
-		        default: System.out.print("OPÇÃO INVÁLIDA!\n\n"); opc = 0;
+		        
+		        default: System.out.print("OPÇÃO INVÁLIDA!\n\n"); opc = 0; //efault do switch principal
 		        	
 	        }//switch
         	        	
