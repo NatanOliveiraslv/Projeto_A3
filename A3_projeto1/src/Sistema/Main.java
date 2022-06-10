@@ -24,6 +24,8 @@ public class Main {
         
         String nome_curso; float carga; String descricao; int cod_Curso = 0;  //Variaveis para cadastrar um curso
         
+        Curso x; //Apennas para facilitar na inserção de alunos no curso
+        
         int opc = 0; // variavel que possibilita que o usuario escolha uma opção;
                 
         Dados dados = new Dados();
@@ -225,7 +227,7 @@ public class Main {
 	        
 		        case 4: 
 		        	do {
-		        		System.out.println( "\n|  1 - Cadastrar curso"
+		        		System.out.println( "|  1 - Cadastrar curso"
  	        							  + "\n|  2 - Inserir aluno em curso"
  	        							  + "\n"); 
 		        		opc = input.nextInt();
@@ -236,7 +238,7 @@ public class Main {
 		    	        	case 1: 	
 		    	        			do {
 		    	        			try {
-		    			        	cod_Curso++; 	
+		    			        	cod_Curso = dados.contaCurso(); 	
 		    			        	System.out.printf("Digite o nome do curso: ");
 		    			            nome_curso = input.nextLine();
 		    			             
@@ -263,20 +265,49 @@ public class Main {
 		    			              
 		    			            System.out.printf(dados.encontraCurso(cod_Curso).toString());
 		    			              
-		    			            System.out.println("\n\nDeseja cadastrar outro curso, 1 - Sim, 2 - Não: ");
-		    			            opc = input.nextInt();
-		    			              
-		    			            input.nextLine();
+		    			            //ira perguntar ao usuário se quer inserir um novo Professor
+		    		    	        System.out.println("\n********************** OBS **********************\n");
+		    		    	        System.out.println("Caso não queira mais cadastrar, "
+		    		    	        				 + "\nNÃO ENCERRE O PROGRAMA"
+		    		    	        				 + "\ndigite 2 para parar o cadastro e salvar os "
+		    		    	        				 + "\ndados cadastrados");
+		    		    	        System.out.println("\n*************************************************\n");
+		    		    	        
+		    	        	        //pergunta se o usuário deseja continuar à cadastrar um novo aluno
+		    	        	        System.out.println("\nDeseja cadastrar uma nova sala: \n"
+		    	        	        					+ "\n|  1 - Sim "
+		    	        	        					+ "\n|  2 - Não "
+		    	        	        					+ "\n"); 
+		    		    	        opc = input.nextInt();
+		    		    	        
+		    		    	        input.nextLine();
+		    		    	        
+		    		    	        System.out.printf("\n");
+		    		    	        
 		    			        	}catch(InputMismatchException exception){
 		    			        		System.out.println("\n\nERRO: Dados inseridos de forma incorreta!\n\n");
 		    			        		input.nextLine();
 		    			        		continue;
 		    			        	}
-		    			            System.out.printf("\n");
-		    	        			}while(opc == 1); opc = 1; break;//do 
+		    	        			
+		    			            
+		    	        			}while(opc == 1); dados.persisteCurso(); opc = 1; break;//do 
+		    	        		
+		    	        	case 2:
+		    	        		do {
+		    	        			System.out.println("Digite o codigo do curso: ");
+		    	        			cod_Curso = input.nextInt();
+		    	        			input.nextLine();
+		    	        			x = dados.encontraCurso(cod_Curso);
+		    	        			while(opc == 2){
+		    	        				System.out.println("Digite o codigo do aluno: ");
+		    	        				matriculaAluno = input.nextInt();
+		    	        				x.addAluno(dados.encontraAluno(matriculaAluno));}
+		    	        		}while(opc == 1); opc = 1; break;
+		    	        		
 		    	        }
 			        	
-			    }while(opc != 2); opc = 0; break;
+			    }while(opc == 1); opc = 0; break;
 			        
 		        default: System.out.print("OPÇÃO INVÁLIDA!\n\n"); opc = 0;
 		        	

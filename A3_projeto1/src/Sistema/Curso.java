@@ -94,8 +94,12 @@ public class Curso implements Serializable{
 	
     @Override
 	public String toString() {
-		return "Cod. do curso: " + cod_curso + "\nNome do curso: " + nome_curso + "\nCarga horária: " + carga + "\nDescrição: "
-				+ descricao + "S\nSala: " + salaDoCurso + "\nProfessor: " + professorDoCurso;
+		return "Cod. do curso: " + cod_curso + 
+				"\nNome do curso: " + nome_curso + 
+				"\nCarga horária: " + carga + 
+				"\nDescrição: " + descricao + 
+				"\nSala: " + salaDoCurso.getLocal() +
+				"\nProfessor: " + professorDoCurso.getNome();
 	}
 
     
