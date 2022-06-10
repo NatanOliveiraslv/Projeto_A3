@@ -1,17 +1,30 @@
 package Sistema;
 
-public class Sala {
+import java.io.Serializable;
 
-    private String nome_sala;
+public class Sala implements Serializable{
+
+    private int cod_sala;
     private String local;
     private int capacidade;
+    
+    
+    public Sala() {
+	}
 
-    public String getNome_sala() {
-        return nome_sala;
+	public Sala(int cod_sala, String local, int capacidade) { //contrutor
+		super();
+		this.cod_sala = cod_sala;
+		this.local = local;
+		this.capacidade = capacidade;
+	}
+
+	public int getCod_sala() {
+        return cod_sala;
     }
 
-    public void setNome_sala(String nome_sala) {
-        this.nome_sala = nome_sala;
+    public void setCod_sala(int num_sala) {
+        this.cod_sala = num_sala;
     }
 
     public String getLocal() {
@@ -29,4 +42,11 @@ public class Sala {
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
+
+	@Override
+	public String toString() {
+		return "\nCod. da sala: " + cod_sala + "\nlocal: " + local + "\nCapacidade: " + capacidade;
+	}
+    
+    
 }

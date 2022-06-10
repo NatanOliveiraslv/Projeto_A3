@@ -21,4 +21,14 @@ public class Professor extends Pessoa implements Serializable{
     public void setCod_funcionario(int cod_funcionario) {
         this.cod_funcionario = cod_funcionario;
     }
+    
+    @Override
+    public String toString() {
+        return 	"\nNome: " + super.getNome() +
+                "\nCPF: " + super.getCpf() +
+                "\nEndereco: " + super.getEndereco() +
+                "\nEemail: " + super.getEmail() + 
+                "\nCelular: " + super.getCelular() +
+                "\nCod. funcionário: " + this.cod_funcionario + "\n";
+    }
 }

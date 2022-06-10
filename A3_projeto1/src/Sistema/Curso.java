@@ -9,16 +9,22 @@ public class Curso implements Serializable{
     private String nome_curso;
     private float carga = 0;
     private String descricao;
-    ArrayList<Aluno> listaAlunosDoCurso;
+    ArrayList<Aluno> listaAlunosDoCurso;  
+    private Sala salaDoCurso;
+    private Professor professorDoCurso;
 
   //Quando realizada uma instancia da classe curso, seá criada uma nova ArrayList contedno a lista de alunos do curso
-    public Curso() {this.listaAlunosDoCurso = new ArrayList<>();}; //construturo sem parametros
+    public Curso() { //construturo sem parametros
+    	this.listaAlunosDoCurso = new ArrayList<>();
+    }
     
-    public Curso(int cod_curso, String nome_curso, float carga, String descricao) { //construtor com parametros
+    public Curso(int cod_curso, String nome_curso, float carga, String descricao, Sala sala, Professor professor) { //construtor com parametros
         this.cod_curso = cod_curso;
         this.nome_curso = nome_curso;
         this.carga = carga;
         this.descricao = descricao;
+        this.salaDoCurso = sala;
+        this.professorDoCurso = professor;
         this.listaAlunosDoCurso = new ArrayList<>();
         
     }
@@ -54,9 +60,28 @@ public class Curso implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
+
+    public Sala getSalaDoCurso() {
+		return salaDoCurso;
+	}
+
+	public void setSalaDoCurso(Sala salaDoCurso) {
+		this.salaDoCurso = salaDoCurso;
+	}
+
+	public Professor getProfessorDoCurso() {
+		return professorDoCurso;
+	}
+
+	public void setProfessorDoCurso(Professor professorDoCurso) {
+		this.professorDoCurso = professorDoCurso;
+	}
+
+	//Adiciona o aluno ao listaAlunosDoCruso
     public void addAluno(Aluno aluno) { 
-    	this.listaAlunosDoCurso.add(aluno);
+    	if(listaAlunosDoCurso.size() < salaDoCurso.getCapacidade()) {
+    		this.listaAlunosDoCurso.add(aluno);
+    	}else {System.out.println("O limite da capacidade de alunos do curso foi atingido!");}	
     }
 
     public void listaAlunos() {
@@ -66,12 +91,11 @@ public class Curso implements Serializable{
     		System.out.print("Matricula: " + c.getMatricula() + " Nome: " + c.getNome() );
     	}
     }
-
 	
     @Override
 	public String toString() {
-		return "Cod do curso: " + cod_curso + "\nNome do curso: " + nome_curso + "\nCarga horária: " + carga + "\nDescricao: "
-				+ descricao;
+		return "Cod. do curso: " + cod_curso + "\nNome do curso: " + nome_curso + "\nCarga horária: " + carga + "\nDescrição: "
+				+ descricao + "S\nSala: " + salaDoCurso + "\nProfessor: " + professorDoCurso;
 	}
 
     

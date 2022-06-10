@@ -8,7 +8,7 @@ public class Aluno extends Pessoa implements Serializable { //Sub-classe que ext
 
     private int matricula;
 
-    public Aluno() {; // construtor
+    public Aluno() { // construtor
     }
 
     public Aluno(String nome, String cpf, String endereco, String email, String celular, int matricula) { //cnstrutor

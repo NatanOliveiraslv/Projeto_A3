@@ -8,7 +8,7 @@ public class TesteLeituraArray {
 	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 		
 		ArrayList<Object> listaPessoa;
-		listaPessoa = Serializador.ler("listaAluno.dat");
+		listaPessoa = Serializador.ler("ListaSala.dat");
 		
 		for(Object p : listaPessoa) {
 			System.out.println(p);
