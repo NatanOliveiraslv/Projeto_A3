@@ -22,11 +22,11 @@ Como executar o programa:
 
 2.Navegue até o diretório, utilizando o comando "cd", onde o arquivo foi extraído
 
-4.Navegue até a pasta "src"
+3.Navegue até a pasta "src"
 
-5.Digite "javac jfprincipal.java" e prescione entre
+4.Digite "javac jfprincipal.java" e prescione entre
 
-6.Diigite "java jfprincipal.java" e prescione entre
+5.Diigite "java jfprincipal.java" e prescione entre
 
 ----------------------------------------------------------------------------------------------
 
