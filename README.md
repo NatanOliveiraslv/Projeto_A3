@@ -18,15 +18,15 @@ disponível em: https://www.oracle.com/java/technologies/downloads/#jdk18-window
 
 Como executar o programa:
 
-1.Extraia o arquivo "Programa.zip"
+1.Abra o cmd ou o console
 
-3.Abra o cmd ou o console
+2.Navegue até o diretório, utilizando o comando "cd", onde o arquivo foi extraído
 
-3.Navegue até o diretório, utilizando o comando "cd", onde o arquivo foi extraído
+4.Navegue até a pasta "src"
 
-4.Digite "cd Programa" e pressione entre
+5.Digite "javac jfprincipal.java" e prescione entre
 
-7.Digite "java jfprincipal.java" e prescione entre
+6.Diigite "java jfprincipal.java" e prescione entre
 
 ----------------------------------------------------------------------------------------------
 
