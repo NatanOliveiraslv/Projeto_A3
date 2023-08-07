@@ -41,6 +41,6 @@ perder seus dados cadastrados e poderá causar problemas no funcionamento do pro
 
 Sobre o programa: 
 
-Utilizei a linguagem java e como ferramenta a IDE eclipse.
+Utilizei a linguagem java, como ferramenta a IDE eclipse, e persisti os dados em arquivo.
 
 ----------------------------------------------------------------------------------------------
